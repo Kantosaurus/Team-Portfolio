@@ -47,7 +47,7 @@ export default function Hero() {
         {/* Label */}
         <div className="opacity-0 mb-6">
           <span className="text-sm font-semibold tracking-wider text-gray-500 uppercase">
-            Team Synapse
+            Team PRSM
           </span>
         </div>
 

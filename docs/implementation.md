@@ -10,7 +10,7 @@ This document outlines how to structure a **team portfolio website** for a 7-mem
 **Goal:** Instantly convey who you are and what you’re about.
 
 **Include:**
-- Team name and tagline (e.g., “Team SYNAPSE — Innovating Across Disciplines”)
+- Team name and tagline (e.g., “Team PRSM — Innovating Across Disciplines”)
 - 1-line description (e.g., “We are a cross-disciplinary team from SUTD combining engineering, design, and computing to solve real-world challenges.”)
 - Eye-catching group photo or looping animation
 - “Partner With Us” call-to-action button
