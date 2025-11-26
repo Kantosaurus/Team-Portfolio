@@ -72,9 +72,9 @@ export default function TeamMemberCard({ member, index }: TeamMemberCardProps) {
             alt={member.name}
             className="w-full h-64 object-cover transition-transform duration-500 hover:scale-105"
             style={{
-              objectPosition: member.name === 'Woo Jon Hou Ainsley' ? 'center 1%' :
+              objectPosition: member.name === 'Ainsley Woo' ? 'center 1%' :
                              member.name === 'Baddipadige Amith Reddy' ? 'center 40%' :
-                             member.name === 'Akash' ? 'center 70%' :
+                             member.name === 'Akash Subramani' ? 'center 70%' :
                              'center center'
             }}
           />
