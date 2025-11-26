@@ -1,5 +1,9 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
+
 export default function ProblemStatements() {
   const problems = [
     {
@@ -16,10 +20,32 @@ export default function ProblemStatements() {
     },
   ];
 
+  const [activeCard, setActiveCard] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    container: containerRef,
+    offset: ['start start', 'end start'],
+  });
+
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    const cardsBreakpoints = problems.map((_, index) => index / problems.length);
+    const closestBreakpointIndex = cardsBreakpoints.reduce(
+      (acc, breakpoint, index) => {
+        const distance = Math.abs(latest - breakpoint);
+        if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
+          return index;
+        }
+        return acc;
+      },
+      0
+    );
+    setActiveCard(closestBreakpointIndex);
+  });
+
   return (
     <section
       id="problem-statements-section"
-      className="section-spacing relative overflow-hidden"
+      className="relative overflow-hidden py-32"
       style={{
         background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.8) 100%)',
       }}
@@ -33,7 +59,7 @@ export default function ProblemStatements() {
       <div className="relative z-10">
         <div className="max-w-grid mx-auto px-12">
           {/* Section Header */}
-          <div className="mb-24">
+          <div className="mb-32">
             <div className="inline-block mb-4">
               <span className="text-xs font-semibold tracking-widest text-neutral-500 uppercase">
                 What We Solve
@@ -48,31 +74,129 @@ export default function ProblemStatements() {
             </p>
           </div>
 
-          {/* Problem Cards */}
-          <div className="space-y-12">
-            {problems.map((problem, index) => (
-              <div key={index} className="glass-card rounded-2xl p-10 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-                <div className="flex gap-8">
-                  {/* Number */}
-                  <div className="flex-shrink-0">
-                    <div className="text-6xl font-bold text-primary opacity-20">
-                      {String(index + 1).padStart(2, '0')}
-                    </div>
-                  </div>
+          {/* Sticky Scroll Container */}
+          <div className="relative grid lg:grid-cols-12 gap-12">
+            {/* Left side - Scrollable Problem Cards */}
+            <div className="lg:col-span-8">
+              <div
+                ref={containerRef}
+                className="relative overflow-y-auto h-[700px] rounded-3xl px-2 smooth-scroll"
+                style={{
+                  scrollbarWidth: 'thin',
+                  scrollbarColor: 'rgba(147, 51, 234, 0.3) transparent',
+                }}
+              >
+                <div className="space-y-8 pb-96">
+                  {problems.map((problem, index) => (
+                    <motion.div
+                      key={index}
+                      animate={{
+                        scale: activeCard === index ? 1 : 0.96,
+                        opacity: activeCard === index ? 1 : 0.4,
+                      }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                      className="glass-card rounded-3xl p-12 transition-shadow duration-500"
+                    >
+                      <div className="flex gap-8 items-start">
+                        {/* Number */}
+                        <motion.div
+                          animate={{
+                            opacity: activeCard === index ? 0.3 : 0.15,
+                            scale: activeCard === index ? 1.05 : 0.95,
+                          }}
+                          transition={{ duration: 0.5 }}
+                          className="flex-shrink-0 text-7xl font-bold text-primary leading-none"
+                        >
+                          {String(index + 1).padStart(2, '0')}
+                        </motion.div>
 
-                  {/* Content */}
-                  <div className="flex-1">
-                    <h3 className="text-h3 font-semibold text-neutral-900 mb-4">
-                      {problem.title}
-                    </h3>
-                    <div className="h-px bg-gradient-to-r from-neutral-300 to-transparent mb-6" />
-                    <p className="text-body text-neutral-700 leading-relaxed">
-                      {problem.description}
-                    </p>
-                  </div>
+                        {/* Content */}
+                        <div className="flex-1 pt-2">
+                          <h3 className="text-h2 font-semibold text-neutral-900 mb-6">
+                            {problem.title}
+                          </h3>
+                          <div className="h-px bg-gradient-to-r from-primary/30 via-neutral-300 to-transparent mb-6" />
+                          <p className="text-body-lg text-neutral-700 leading-relaxed">
+                            {problem.description}
+                          </p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Right side - Sticky Progress Indicator */}
+            <div className="hidden lg:block lg:col-span-4">
+              <div className="sticky top-32">
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="glass-card rounded-3xl p-8 backdrop-blur-xl"
+                >
+                  <div className="text-xs font-semibold tracking-widest text-neutral-400 uppercase mb-6">
+                    Current Focus
+                  </div>
+
+                  <motion.div
+                    key={activeCard}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mb-8"
+                  >
+                    <div className="text-5xl font-bold text-primary mb-4">
+                      {String(activeCard + 1).padStart(2, '0')}
+                    </div>
+                    <h4 className="text-h4 font-semibold text-neutral-900 leading-tight">
+                      {problems[activeCard].title}
+                    </h4>
+                  </motion.div>
+
+                  <div className="space-y-3">
+                    {problems.map((_, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ width: "40%" }}
+                        animate={{
+                          width: index === activeCard ? "100%" : index < activeCard ? "60%" : "40%",
+                        }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
+                        className="relative"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div
+                            className={`h-1.5 rounded-full transition-colors duration-500 ${
+                              index === activeCard
+                                ? 'bg-primary'
+                                : index < activeCard
+                                ? 'bg-primary/50'
+                                : 'bg-neutral-300'
+                            }`}
+                            style={{ width: '100%' }}
+                          />
+                          <span
+                            className={`text-xs font-medium whitespace-nowrap transition-opacity duration-300 ${
+                              index === activeCard ? 'opacity-100' : 'opacity-0'
+                            }`}
+                          >
+                            {index + 1}/{problems.length}
+                          </span>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-neutral-200">
+                    <p className="text-xs text-neutral-500 italic">
+                      Scroll to explore each problem
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

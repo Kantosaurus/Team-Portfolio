@@ -38,25 +38,32 @@ export default function EPDPortfolio() {
 
   const projects = [
     {
-      title: 'Smart Medical Device',
-      category: 'Healthcare Innovation',
-      description: 'IoT-enabled monitoring system with user-centered design for remote patient care.',
-      skills: ['Product Design', 'IoT', 'User Research', '3D Prototyping'],
-      impact: 'Improved patient outcomes by 35%'
+      title: 'Fluid Mechanics Design Project',
+      category: 'Mechanical Engineering',
+      description: 'Explored a novel way of encoding musical notes using liquid, oil, and air intervals. The mechanical subsystem features custom-designed valves and servo mechanisms that precisely generate fixed fluid and air pulses, enabling the system to "play" notes through controlled flow patterns.',
+      skills: ['Fluid Mechanics', 'Mechanical Design', 'Servo Systems', 'Precision Engineering'],
+      impact: 'Novel musical encoding'
     },
     {
-      title: 'Sustainable Packaging Solution',
-      category: 'Green Engineering',
-      description: 'Biodegradable packaging system reducing waste while maintaining product protection.',
-      skills: ['Material Science', 'CAD', 'Lifecycle Analysis', 'Manufacturing'],
-      impact: '80% reduction in plastic waste'
+      title: 'Autonomous Mushroom Harvester',
+      category: 'Food Technology',
+      description: 'Delivered a fully automated mushroom harvester engineered to boost Singapore\'s food resilience. Its mechanical systems enable precise growth conditions and gentle, reliable harvesting—turning mushroom farming into a scalable, hands-off process that supports sustainable local food production.',
+      skills: ['Automation', 'Mechanical Systems', 'Agricultural Engineering', 'Sustainability'],
+      impact: 'Enhanced food resilience'
     },
     {
-      title: 'Ergonomic Workspace System',
-      category: 'Human Factors',
-      description: 'Modular furniture design optimizing comfort and productivity for hybrid work environments.',
-      skills: ['Ergonomics', 'Industrial Design', 'Prototyping', 'User Testing'],
-      impact: '50% productivity increase'
+      title: 'Cambodia FACT - Solar Lighting System',
+      category: 'Social Impact Engineering',
+      description: 'Delivered a solar-powered lighting system for a mobile library in rural Siem Reap, Cambodia. The electrical setup was built using easily sourced local components, with power requirements carefully calculated to meet the villagers\' operational needs—a reliable, sustainable lighting solution supporting community learning in remote areas.',
+      skills: ['Solar Power', 'Electrical Design', 'Sustainability', 'Community Engineering'],
+      impact: 'Powered rural education'
+    },
+    {
+      title: 'Berlin Summer Program – CanSat Satellite',
+      category: 'Space Engineering',
+      description: 'Designed, built, and launched a fully functional satellite from the ground up. Using Arduino hardware and custom-fabricated circuit boards, the team created a compact, efficient platform capable of transmitting telemetry data from orbit—demonstrating end-to-end satellite engineering in a lightweight form factor.',
+      skills: ['Satellite Design', 'Arduino', 'Circuit Fabrication', 'Telemetry Systems'],
+      impact: 'Successful orbital launch'
     },
   ];
 
@@ -83,7 +90,7 @@ export default function EPDPortfolio() {
         {/* Projects List */}
         <div ref={projectsRef} className="space-y-24">
           {projects.map((project, index) => (
-            <div key={index} className="opacity-0">
+            <div key={`epd-project-${index}`} className="opacity-0">
               <div className="grid lg:grid-cols-12 gap-12 items-start border-l-4 border-secondary pl-8">
                 {/* Number & Category */}
                 <div className="lg:col-span-2">

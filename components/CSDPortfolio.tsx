@@ -38,25 +38,32 @@ export default function CSDPortfolio() {
 
   const projects = [
     {
-      title: 'AI-Powered Design Tool',
-      category: 'Machine Learning',
-      description: 'Intelligent design assistant using computer vision and generative algorithms to accelerate creative workflows.',
-      skills: ['React', 'TensorFlow.js', 'Computer Vision', 'UI/UX Design'],
-      impact: '70% faster design iteration'
+      title: 'Wandr',
+      category: 'AI Travel Platform',
+      description: 'A comprehensive travel companion that helps users discover, plan, and share their travel experiences. Using AI-powered recommendations and community-driven content, it creates personalized itineraries based on user preferences, budget, and travel style.',
+      skills: ['AI Recommendations', 'Full-Stack Development', 'Community Features', 'Personalization'],
+      impact: 'Personalized travel planning'
     },
     {
-      title: 'Accessible Web Platform',
-      category: 'Inclusive Design',
-      description: 'Universal design system ensuring WCAG compliance with beautiful, intuitive user experiences.',
-      skills: ['TypeScript', 'Design Systems', 'Accessibility', 'User Research'],
-      impact: 'Reached 10K+ diverse users'
+      title: 'Duck Duck Guess',
+      category: 'Hardware-Software Integration',
+      description: 'Developed a hardware-based reaction game where ducks light up in sequence, and players must hit them in the correct order. Designed and built the entire system from scratch, including the game logic, state machine architecture, and a custom Beta Assembly ALU to drive the game mechanics.',
+      skills: ['Digital Design', 'Beta Assembly', 'State Machines', 'Hardware Integration'],
+      impact: 'Custom ALU implementation'
     },
     {
-      title: 'Real-Time Collaboration Tool',
-      category: 'Cloud Computing',
-      description: 'Seamless multi-user design environment with live updates and version control.',
-      skills: ['WebSockets', 'Node.js', 'GraphQL', 'UI Animation'],
-      impact: '500+ teams onboarded'
+      title: 'DripSeek',
+      category: 'Computer Vision',
+      description: 'A browser plugin that identifies clothes worn by actors in real time on streaming platforms, letting users instantly shop similar styles. An agentic computer vision solution that bridges entertainment and e-commerce seamlessly.',
+      skills: ['Computer Vision', 'Browser Extension', 'Real-Time Processing', 'AI Agents'],
+      impact: 'Real-time style detection'
+    },
+    {
+      title: 'IELTS SenseAI',
+      category: 'EdTech AI Platform',
+      description: 'Uses advanced Gemini, Heylabs, and Elevenlabs to provide personalized and realistic IELTS preparation. The platform analyzes writing samples, provides detailed feedback, and generates practice questions tailored to each student\'s proficiency level.',
+      skills: ['Gemini AI', 'Natural Language Processing', 'Educational Technology', 'Personalized Learning'],
+      impact: 'AI-powered IELTS prep'
     },
   ];
 
@@ -83,7 +90,7 @@ export default function CSDPortfolio() {
         {/* Projects List */}
         <div ref={projectsRef} className="space-y-24">
           {projects.map((project, index) => (
-            <div key={index} className="opacity-0">
+            <div key={`csd-project-${index}`} className="opacity-0">
               <div className="grid lg:grid-cols-12 gap-12 items-start border-l-4 border-accent-blue pl-8">
                 {/* Number & Category */}
                 <div className="lg:col-span-2">

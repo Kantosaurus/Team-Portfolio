@@ -6,7 +6,6 @@ import anime from 'animejs';
 export default function CompanyRequirements() {
   const sectionRef = useRef<HTMLElement>(null);
   const requirementsRef = useRef<HTMLDivElement>(null);
-  const processRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,16 +23,6 @@ export default function CompanyRequirements() {
                 easing: 'cubicBezier(0.25, 0.46, 0.45, 0.94)',
               });
             }
-
-            // Process steps slide in
-            anime({
-              targets: processRef.current,
-              opacity: [0, 1],
-              translateY: [40, 0],
-              duration: 1000,
-              delay: 600,
-              easing: 'cubicBezier(0.25, 0.46, 0.45, 0.94)',
-            });
 
             observer.disconnect();
           }
@@ -70,13 +59,6 @@ export default function CompanyRequirements() {
       title: 'Participation Fee',
       description: 'SGD 6,000 participation fee to support project development, resources, and operational costs.',
     },
-  ];
-
-  const submissionSteps = [
-    'Download and complete the partnership inquiry form',
-    'Provide detailed problem description and project objectives',
-    'Submit relevant documentation and background materials',
-    'Await response from our partnership team (3-5 business days)'
   ];
 
   return (
@@ -129,7 +111,7 @@ export default function CompanyRequirements() {
         </div>
 
         {/* IP Ownership Notice */}
-        <div className="mb-24">
+        <div>
           <div className="glass-secondary border-2 border-primary p-12 rounded-2xl">
             <div className="flex gap-6 items-start">
               <div className="text-5xl">📄</div>
@@ -142,77 +124,6 @@ export default function CompanyRequirements() {
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Submission Process */}
-        <div ref={processRef} className="opacity-0">
-          <h3 className="text-h3 font-semibold text-neutral-900 mb-12">
-            Submission Process
-          </h3>
-          <div className="glass-primary rounded-2xl p-12">
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* Left - Steps */}
-              <div>
-                <div className="space-y-6">
-                  {submissionSteps.map((step, index) => (
-                    <div key={index} className="flex gap-6 items-start">
-                      <div className="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold">
-                        {index + 1}
-                      </div>
-                      <p className="text-body text-neutral-700 leading-relaxed pt-1.5">
-                        {step}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right - Contact Info */}
-              <div className="flex flex-col justify-center">
-                <div className="bg-white/50 rounded-xl p-8 border border-primary/20">
-                  <div className="text-xs font-semibold tracking-widest text-neutral-500 uppercase mb-4">
-                    Partnership Inquiries
-                  </div>
-                  <h4 className="text-h4 font-semibold text-neutral-900 mb-6">
-                    Get Started Today
-                  </h4>
-                  <div className="space-y-4 mb-8">
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-secondary" />
-                      <span className="text-body text-neutral-700">
-                        Email: capstone.prsm@sutd.edu.sg
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-secondary" />
-                      <span className="text-body text-neutral-700">
-                        Response time: 3-5 business days
-                      </span>
-                    </div>
-                  </div>
-                  <a
-                    href="#contact-section"
-                    className="inline-block w-full text-center px-8 py-3.5 bg-primary text-white text-sm font-semibold tracking-wide hover:bg-primary-dark transition-all duration-300"
-                  >
-                    SUBMIT PARTNERSHIP INQUIRY
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* FAQ Note */}
-        <div className="mt-16 text-center">
-          <div className="inline-block glass-card px-8 py-4 rounded-xl">
-            <p className="text-body-sm text-neutral-600">
-              Have questions about the requirements?{' '}
-              <a href="#contact-section" className="text-primary font-semibold hover:underline">
-                Contact our team
-              </a>
-              {' '}for clarification.
-            </p>
           </div>
         </div>
       </div>

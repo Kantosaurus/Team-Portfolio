@@ -38,25 +38,32 @@ export default function ESDPortfolio() {
 
   const projects = [
     {
-      title: 'Supply Chain Optimization Platform',
-      category: 'Logistics Systems',
-      description: 'Data-driven analytics platform reducing delivery times and operational costs through intelligent routing.',
-      skills: ['Systems Analysis', 'Data Analytics', 'Optimization', 'Cloud Infrastructure'],
-      impact: '45% cost reduction achieved'
+      title: 'Airplane Seat Configuration Optimisation',
+      category: 'Operations Research',
+      description: 'Developed an integer linear programming model to optimise seat configurations for an Airbus A350-900 operating on the London-Delhi route. Evaluated space, weight, and demand constraints to maximise overall profitability, refining model parameters and validating results against real-world operational data.',
+      skills: ['Mathematical Modelling', 'Operations Research', 'Data-Driven Analysis', 'Scenario Validation'],
+      impact: 'Maximised profitability'
     },
     {
-      title: 'Smart City Infrastructure',
-      category: 'Urban Systems',
-      description: 'Integrated IoT network for traffic management, energy distribution, and public services optimization.',
-      skills: ['Systems Engineering', 'IoT Networks', 'Big Data', 'Urban Planning'],
-      impact: 'Serving 2M+ residents'
+      title: 'DGCT Performance Dashboard',
+      category: 'Data Analytics & Forecasting',
+      description: 'Collaborated with Digital Content Technologies (DGCT) to develop an interactive dashboard visualising storage, bandwidth usage, and system performance metrics. Performed data cleaning and analysis using MySQL and Excel to identify usage patterns and inefficiencies, applying XGBoost and exponential smoothing for storage growth projections.',
+      skills: ['MySQL', 'Excel', 'XGBoost', 'Forecasting', 'Dashboard Design'],
+      impact: 'Improved scalability planning'
     },
     {
-      title: 'Healthcare Management System',
-      category: 'Service Design',
-      description: 'End-to-end patient journey optimization improving hospital efficiency and patient experience.',
-      skills: ['Process Design', 'Service Blueprint', 'Digital Transformation', 'Stakeholder Management'],
-      impact: '60% reduction in wait times'
+      title: 'Project Babysteps',
+      category: 'Business Intelligence',
+      description: 'Developed an interactive sales dashboard for Beauty Mums & Babies using PowerBI, analyzing over 10,000 sales records to identify key trends in sales performance and customer demographics. Delivered actionable insights to support targeted marketing strategies and business growth.',
+      skills: ['PowerBI', 'Data Analytics', 'Customer Segmentation', 'Sales Trends'],
+      impact: '10,000+ records analyzed'
+    },
+    {
+      title: 'Project GrowTrackRun',
+      category: 'Gamified IoT System',
+      description: 'Created a gamified running system to boost motivation and social interaction among runners. Featured Light Pacer, checkpoint displays, infrared sensors, live leaderboard, and a Figma-designed companion app that enhanced safety, engagement, and friendly competition.',
+      skills: ['IoT Sensors', 'System Design', 'Figma Prototyping', 'Gamification'],
+      impact: 'Enhanced user engagement'
     },
   ];
 
@@ -83,7 +90,7 @@ export default function ESDPortfolio() {
         {/* Projects List */}
         <div ref={projectsRef} className="space-y-24">
           {projects.map((project, index) => (
-            <div key={index} className="opacity-0">
+            <div key={`esd-project-${index}`} className="opacity-0">
               <div className="grid lg:grid-cols-12 gap-12 items-start border-l-4 border-accent-teal pl-8">
                 {/* Number & Category */}
                 <div className="lg:col-span-2">

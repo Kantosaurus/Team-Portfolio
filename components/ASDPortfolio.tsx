@@ -38,25 +38,25 @@ export default function ASDPortfolio() {
 
   const projects = [
     {
-      title: 'Sustainable Urban Design',
-      category: 'Architecture',
-      description: 'Innovative mixed-use development integrating green spaces with modern infrastructure.',
-      skills: ['Parametric Design', 'BIM', 'Sustainability', 'Urban Planning'],
-      impact: 'Reduced carbon footprint by 40%'
+      title: 'Agriwave',
+      category: 'Urban Agriculture',
+      description: 'Developed in collaboration with a multidisciplinary team, this project focuses on vertical farming systems that strengthen community food security while supporting mental well-being. Contributions include generating design variations and technical drawings through custom Grasshopper scripts, enabling efficient exploration of scalable, community-friendly farming structures.',
+      skills: ['Grasshopper Scripting', 'Parametric Design', 'Vertical Farming', 'Community Design'],
+      impact: 'Enhanced food security'
     },
     {
-      title: 'Adaptive Building Systems',
-      category: 'Smart Architecture',
-      description: 'Climate-responsive facade systems using computational design and IoT integration.',
-      skills: ['Computational Design', 'IoT', 'Energy Modeling', 'Automation'],
-      impact: '30% energy efficiency improvement'
+      title: 'Parametric Bridge',
+      category: 'Structural Engineering',
+      description: 'Designed a suspended, geometrically dynamic bridge spanning 3+ meters, balancing structural integrity with architectural aesthetics under strict engineering constraints (60 kg load, end supports only). Developed custom Python scripts and performed structural optimization using Kangaroo and Galapagos in Grasshopper. Used Karamba for member stress assessment and participated in full fabrication—from material selection to assembly and load testing.',
+      skills: ['Python Scripting', 'Grasshopper', 'Kangaroo', 'Galapagos', 'Karamba'],
+      impact: 'Structural innovation'
     },
     {
-      title: 'Heritage Restoration',
-      category: 'Conservation',
-      description: 'Digital preservation and adaptive reuse of historical structures with modern techniques.',
-      skills: ['3D Scanning', 'Heritage Conservation', 'Structural Analysis', 'Material Science'],
-      impact: 'Preserved 5 heritage buildings'
+      title: 'The Deep Library',
+      category: 'Social Architecture',
+      description: 'A library designed to foster human interaction while being secluded within and integrated with nature. Forces social interaction through unplanned encounters in traditionally ignored spaces like staircases, emphasizing the journey over the destination through carefully crafted views and light changes. Challenges the digital-first "Google it" culture by creating a physical space for collective knowledge sharing.',
+      skills: ['Social Design', 'Nature Integration', 'Experience Design', 'Spatial Planning'],
+      impact: 'Human-centered spaces'
     },
   ];
 
@@ -83,7 +83,7 @@ export default function ASDPortfolio() {
         {/* Projects List */}
         <div ref={projectsRef} className="space-y-24">
           {projects.map((project, index) => (
-            <div key={index} className="opacity-0">
+            <div key={`asd-project-${index}`} className="opacity-0">
               <div className="grid lg:grid-cols-12 gap-12 items-start border-l-4 border-accent-orange pl-8">
                 {/* Number & Category */}
                 <div className="lg:col-span-2">
