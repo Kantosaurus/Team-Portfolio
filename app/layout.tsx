@@ -3,9 +3,9 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
-  title: "Team Portfolio - Modern & Sleek",
-  description: "A modern and minimalistic team portfolio showcasing our talented members",
-  keywords: ["team", "portfolio", "modern", "web development"],
+  title: "Team PRSM - Innovation Across Disciplines",
+  description: "A cross-disciplinary team from SUTD combining engineering, design, and computing to solve real-world challenges",
+  keywords: ["team", "portfolio", "SUTD", "engineering", "design", "computing", "innovation"],
 };
 
 export default function RootLayout({
@@ -17,6 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   );

@@ -1,28 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --background: #ffffff;
-  --foreground: #0a0a0a;
-}
-
-body {
-  color: #1d1d1f;
-  background: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: 'kern';
-  text-rendering: optimizeLegibility;
-}
-
-html {
-  background: #ffffff;
-  font-size: 16px;
-  line-height: 1.47059;
-  font-weight: 400;
-  letter-spacing: -0.022em;
+  --foreground: #171717;
+  --grid-columns: 12;
+  --grid-gap: 2rem;
 }
 
 * {
@@ -33,23 +19,198 @@ html {
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
+  background: #ffffff;
 }
 
+body {
+  color: var(--foreground);
+  background: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern', 'liga', 'calt';
+  text-rendering: optimizeLegibility;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+/* Swiss Design Grid System */
 @layer utilities {
+  .swiss-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--grid-gap);
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .grid-span-full {
+    grid-column: 1 / -1;
+  }
+
+  .grid-span-6 {
+    grid-column: span 6;
+  }
+
+  .grid-span-4 {
+    grid-column: span 4;
+  }
+
+  .grid-span-8 {
+    grid-column: span 8;
+  }
+
+  /* Typography utilities */
   .text-balance {
     text-wrap: balance;
   }
 
-  /* Glassmorphism utilities */
-  .glass {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+  /* Swiss Design borders - minimal and precise */
+  .border-swiss {
+    border: 0.5px solid #E5E5E5;
   }
 
-  .glass-dark {
-    background: rgba(0, 0, 0, 0.3);
+  /* Minimal shadow for depth */
+  .shadow-swiss {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Data visualization elements */
+  .progress-bar {
+    position: relative;
+    width: 100%;
+    height: 4px;
+    background: #E5E5E5;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: #0066CC;
+    transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Premium Glassmorphism Utilities */
+  .glass {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+  }
+
+  .glass-nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .glass-subtle {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  }
+
+  .glass-primary {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0.05) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 15px 45px rgba(99, 102, 241, 0.15);
+  }
+
+  .glass-secondary {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.2) 0%, rgba(236, 72, 153, 0.05) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(236, 72, 153, 0.3);
+    box-shadow: 0 15px 45px rgba(236, 72, 153, 0.15);
+  }
+
+  /* Gradient Cards */
+  .gradient-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .gradient-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.6;
+  }
+
+  /* Quote styling - Swiss Design */
+  .quote-swiss {
+    padding-left: 2rem;
+    border-left: 2px solid #0066CC;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #171717;
+  }
+
+  /* Section spacing */
+  .section-spacing {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  @media (max-width: 768px) {
+    .section-spacing {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+  }
+
+  /* Clean divider */
+  .divider-swiss {
+    width: 100%;
+    height: 0.5px;
+    background: #E5E5E5;
+    border: none;
+  }
+
+  /* Minimal button reset */
+  .btn-reset {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
   }
 }

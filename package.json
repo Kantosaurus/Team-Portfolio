@@ -20,12 +20,20 @@
   },
   "homepage": "https://github.com/Kantosaurus/Team-Portfolio#readme",
   "dependencies": {
+    "@radix-ui/react-hover-card": "^1.1.15",
+    "@splinetool/react-spline": "^4.1.0",
+    "@tabler/icons-react": "^3.35.0",
     "@types/animejs": "^3.1.13",
     "@vercel/analytics": "^1.5.0",
     "animejs": "^3.2.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.24",
+    "motion": "^12.23.24",
     "next": "^16.0.1",
+    "qss": "^3.0.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",

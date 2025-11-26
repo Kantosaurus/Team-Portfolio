@@ -14,23 +14,35 @@ export default function AboutTeam() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            // Story slides in from left
             anime({
-              targets: [storyRef.current, missionRef.current],
+              targets: storyRef.current,
               opacity: [0, 1],
-              translateY: [20, 0],
-              duration: 1000,
-              delay: anime.stagger(200),
+              translateX: [-60, 0],
+              duration: 1200,
               easing: 'cubicBezier(0.25, 0.46, 0.45, 0.94)',
             });
 
+            // Mission slides in from right with delay
+            anime({
+              targets: missionRef.current,
+              opacity: [0, 1],
+              translateX: [60, 0],
+              duration: 1200,
+              delay: 300,
+              easing: 'cubicBezier(0.25, 0.46, 0.45, 0.94)',
+            });
+
+            // Values cascade in with rotation
             if (valuesRef.current) {
               anime({
                 targets: valuesRef.current.children,
                 opacity: [0, 1],
-                translateY: [20, 0],
-                duration: 800,
-                delay: anime.stagger(100, { start: 400 }),
-                easing: 'cubicBezier(0.25, 0.46, 0.45, 0.94)',
+                translateY: [40, 0],
+                rotateX: [45, 0],
+                duration: 1000,
+                delay: anime.stagger(120, { start: 600 }),
+                easing: 'spring(1, 80, 10, 0)',
               });
             }
 
@@ -38,95 +50,144 @@ export default function AboutTeam() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    // Scroll parallax effect
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const scrollProgress = 1 - (rect.top / window.innerHeight);
+
+      if (scrollProgress > 0 && scrollProgress < 1) {
+        if (storyRef.current) {
+          storyRef.current.style.transform = `translateY(${scrollProgress * -20}px)`;
+        }
+        if (missionRef.current) {
+          missionRef.current.style.transform = `translateY(${scrollProgress * 20}px)`;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const values = [
-    { icon: '🎯', title: 'Innovation First', description: 'We push boundaries and embrace creative solutions' },
-    { icon: '🤝', title: 'Collaboration', description: 'Cross-disciplinary teamwork drives our success' },
-    { icon: '💡', title: 'Impact Driven', description: 'Every project creates meaningful change' },
-    { icon: '🚀', title: 'Continuous Growth', description: 'Learning and adapting is our foundation' },
+    { title: 'Integrity', description: 'We build with honesty, transparency, and ethical responsibility in every decision we make' },
+    { title: 'Curiosity', description: 'We ask questions, explore possibilities, and never stop learning' },
+    { title: 'Collaboration', description: 'We combine diverse perspectives to create solutions greater than the sum of their parts' },
+    { title: 'Sustainability', description: 'We design for longevity, considering environmental and social impact in everything we create' },
+    { title: 'Equity', description: 'We ensure our innovations are accessible, inclusive, and beneficial to all' },
   ];
 
   return (
     <section
       ref={sectionRef}
       id="about-section"
-      className="relative py-32 bg-white overflow-hidden"
+      className="section-spacing relative overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Section Header */}
+      {/* Background Image */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(/prism-background.jpg)',
+            opacity: 1,
+          }}
+        />
+      </div>
+      {/* Additional decoration */}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full filter blur-3xl opacity-10" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-secondary rounded-full filter blur-3xl opacity-10" />
+      </div>
+      <div className="relative z-10">
+      <div className="max-w-grid mx-auto px-12">
+        {/* Section Header - Swiss Design */}
         <div className="mb-24">
-          <h2 className="text-6xl md:text-7xl font-semibold text-gray-900 mb-6 tracking-tight">
+          <div className="inline-block mb-4">
+            <span className="text-xs font-semibold tracking-widest text-white uppercase">
+              About
+            </span>
+            <div className="h-px bg-white mt-2 w-12" />
+          </div>
+          <h2 className="text-display font-semibold text-white mb-4 tracking-tight max-w-content">
             About Team PRSM
           </h2>
-          <p className="text-xl text-gray-600 font-normal">
+          <p className="text-h4 text-white font-normal max-w-narrow">
             Refracting one vision into many perspectives.
           </p>
         </div>
 
-        {/* Story - Clean text block */}
-        <div ref={storyRef} className="mb-24 opacity-0">
-          <h3 className="text-3xl font-semibold text-gray-900 mb-6">
-            The Story Behind PRSM
-          </h3>
-          <div className="space-y-4 text-lg text-gray-600 max-w-4xl leading-relaxed">
-            <p>
-              PRSM — pronounced "prism" — embodies the idea of taking a single beam of light and refracting it into countless colors. For us, that light represents a shared vision: to do good for the world, to do no harm, and to bring clarity where things are complex.
-            </p>
-            <p>
-              Each of us comes from a different discipline, with our own strengths, lenses, and ways of seeing the world. Like a prism, our team turns one idea into many perspectives — engineering precision, design empathy, computational logic, and strategic insight — all converging into solutions that are creative, responsible, and human-centered.
-            </p>
-            <p>
-              We see ourselves as a kind of skunkworks: small, agile, and relentlessly inventive. When faced with challenges, we thrive on experimentation, rapid prototyping, and unconventional thinking. We don't just look for answers — we build them, turning ambiguity into opportunity.
-            </p>
-            <p>
-              PRSM isn't just our name; it's our philosophy. We believe innovation should illuminate, not overwhelm. Our goal is to design and engineer solutions that reflect integrity, imagination, and impact — refracting one shared light into something greater than any single color alone.
-            </p>
+        {/* Vision and Mission Layout */}
+        <div className="mb-24">
+          {/* Vision Section */}
+          <div ref={storyRef} className="mb-16 opacity-0">
+            <h3 className="text-h3 font-semibold text-white mb-8">
+              Our Vision
+            </h3>
+            <div className="space-y-6 text-body-lg text-white leading-relaxed max-w-4xl">
+              <p>
+                Our vision is to become a skunkworks of positive impact — a team that refracts diverse perspectives into breakthrough innovations that are bold, ethical, and transformative.
+              </p>
+              <p>
+                We strive to shape a future where technology illuminates rather than overwhelms, and where every solution we create uplifts people, communities, and the world.
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Mission - Glassmorphic block */}
-        <div ref={missionRef} className="mb-32 opacity-0">
-          <div className="glass border border-gray-200/50 rounded-3xl p-12 md:p-16">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+          {/* Mission Section */}
+          <div ref={missionRef} className="opacity-0">
+            <h3 className="text-h3 font-semibold text-white mb-8">
               Our Mission
             </h3>
-            <p className="text-2xl md:text-3xl font-semibold text-gray-900 leading-snug mb-6">
-              "We aim to bridge design and technology to create impactful solutions that address real-world challenges."
-            </p>
-            <p className="text-lg text-gray-600">
-              Through interdisciplinary collaboration and innovative thinking, we transform complex problems into elegant solutions.
-            </p>
+            <div className="space-y-6 text-body-lg text-white leading-relaxed max-w-4xl">
+              <p>
+                At PRSM, our mission is to innovate boldly and build responsibly.
+              </p>
+              <p>
+                Inspired by skunkworks culture, we move fast, think fearlessly, and combine our diverse disciplines to transform complex challenges into purposeful solutions.
+              </p>
+              <p>
+                We are driven by a commitment to do good, do no harm, and ensure that every idea we develop makes a meaningful, human-centred impact.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Values - No cards, clean grid */}
+        {/* Values - Uniform Grid */}
         <div>
-          <h3 className="text-3xl font-semibold text-gray-900 mb-12">
+          <h3 className="text-h3 font-semibold text-white mb-12">
             Our Core Values
           </h3>
-          <div ref={valuesRef} className="grid md:grid-cols-2 gap-x-16 gap-y-12">
+          <div ref={valuesRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             {values.map((value, index) => (
               <div key={index} className="opacity-0">
-                <div className="text-4xl mb-4">{value.icon}</div>
-                <h4 className="text-xl font-semibold text-gray-900 mb-2">
-                  {value.title}
-                </h4>
-                <p className="text-base text-gray-600">
-                  {value.description}
-                </p>
+                <div className="p-6 h-full rounded-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-white/20" style={{ backgroundColor: 'rgba(64, 64, 64, 0.3)' }}>
+                  <div className="text-4xl font-bold text-white mb-4">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
+                  <h4 className="text-h4 font-semibold text-white mb-3">
+                    {value.title}
+                  </h4>
+                  <p className="text-body-sm text-white leading-relaxed">
+                    {value.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
