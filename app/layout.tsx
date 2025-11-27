@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code-here',
+    google: 'IEXoFMJb6LgJGK6g9BPvjs6H4CdgE4JJqFqquJFP8sA',
   },
 };
 
@@ -236,6 +236,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="google-site-verification" content="IEXoFMJb6LgJGK6g9BPvjs6H4CdgE4JJqFqquJFP8sA" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
