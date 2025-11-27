@@ -65,18 +65,18 @@ export default function WhatIsCapstone() {
   const highlights = [
     {
       icon: '🤝',
-      title: 'University-Industry Partnership',
-      description: 'Collaborative projects bridging academic learning with real-world business challenges'
+      title: 'University-Industry Capstone Partnership',
+      description: 'Collaborative capstone projects bridging academic learning with real-world business challenges through structured industry engagement'
     },
     {
       icon: '👥',
-      title: 'Cross-Functional Teams',
-      description: 'Teams of 5-7 students from diverse disciplines working together'
+      title: 'Cross-Disciplinary Capstone Teams',
+      description: 'Capstone teams of 5-7 students from diverse engineering and design disciplines working together to deliver comprehensive solutions'
     },
     {
       icon: '🎯',
-      title: 'Real-World Impact',
-      description: 'Apply technical and business knowledge to solve actual industry problems'
+      title: 'Real-World Capstone Impact',
+      description: 'Apply technical and business knowledge through capstone projects that solve actual industry problems with measurable outcomes'
     },
   ];
 
@@ -107,11 +107,11 @@ export default function WhatIsCapstone() {
             </span>
             <div className="h-px bg-primary mt-2 w-12 mx-auto" />
           </div>
-          <h2 className="text-display font-semibold text-white mb-4 tracking-tight drop-shadow-2xl">
-            What is Capstone
-          </h2>
+          <h1 className="text-display font-semibold text-white mb-4 tracking-tight drop-shadow-2xl">
+            What is Capstone: University-Industry Partnership Program
+          </h1>
           <p className="text-h4 text-white font-normal max-w-2xl mx-auto drop-shadow-lg">
-            Where academic excellence meets industry innovation.
+            The premier capstone program where academic excellence meets industry innovation through collaborative student projects.
           </p>
         </div>
 
@@ -135,27 +135,27 @@ export default function WhatIsCapstone() {
 
           {/* Text Content - Full Width Centered */}
           <div ref={contentRef} className="opacity-0 max-w-4xl mx-auto">
-            <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-10">
+            <article className="bg-black/40 backdrop-blur-sm rounded-2xl p-10">
               <div className="space-y-6 text-body-lg text-white leading-relaxed text-center drop-shadow-md">
                 <p>
-                  The <LinkPreview url="https://www.sutd.edu.sg/education/undergraduate/capstone/overview/" className="font-bold !text-white">Capstone project</LinkPreview> is a University-Industry partnership whereby students work in cross-functional teams to solve real-world challenges.
+                  The <LinkPreview url="https://www.sutd.edu.sg/education/undergraduate/capstone/overview/" className="font-bold !text-white">SUTD Capstone project</LinkPreview> is a flagship University-Industry partnership program whereby cross-disciplinary student teams collaborate with companies to solve complex real-world challenges through innovative capstone solutions.
                 </p>
                 <p>
-                  Working in teams of 5 to 7 students, these final-year undergraduate students will learn to apply the principles, concepts, and techniques that they have learnt to investigate your technical and business challenges.
+                  <strong>Capstone teams</strong> consist of 5 to 7 final-year undergraduate students who dedicate an entire academic year to tackling your most pressing technical and business challenges. Each capstone project combines theoretical knowledge with practical application, ensuring deliverable solutions that create real impact.
                 </p>
                 <p>
-                  This immersive experience bridges the gap between academic learning and professional practice, allowing students to demonstrate their expertise while delivering tangible value to industry partners.
+                  This immersive <strong>capstone experience</strong> bridges the gap between academic learning and professional practice, allowing students to demonstrate their expertise while delivering tangible value to industry partners. The capstone program has become a cornerstone of SUTD's commitment to industry-relevant education and innovation.
                 </p>
               </div>
-            </div>
+            </article>
           </div>
         </div>
 
         {/* Key Highlights - Horizontal Cards */}
         <div>
-          <h3 className="text-h3 font-semibold text-white mb-12 text-center">
-            Key Highlights
-          </h3>
+          <h2 className="text-h3 font-semibold text-white mb-12 text-center">
+            Key Capstone Program Highlights
+          </h2>
           <div ref={highlightsRef} className="space-y-6 max-w-5xl mx-auto">
             {highlights.map((highlight, index) => (
               <div key={index} className="opacity-0">

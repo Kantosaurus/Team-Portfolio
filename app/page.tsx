@@ -17,6 +17,7 @@ import CompanyRequirements from '@/components/CompanyRequirements';
 import TeamMemberCard from '@/components/TeamMemberCard';
 import WhyPartner from '@/components/WhyPartner';
 import Contact from '@/components/Contact';
+import FAQ from '@/components/FAQ';
 
 const teamMembers = [
   {
@@ -205,6 +206,9 @@ export default function Home() {
 
       {/* Why Partner With Us Section */}
       <WhyPartner />
+
+      {/* FAQ Section */}
+      <FAQ />
 
       {/* Contact Section */}
       <Contact />

@@ -29,7 +29,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <img
           src="/michael-dziedzic-nc11Hg2ja-s-unsplash.jpg"
-          alt="Prism Background"
+          alt="SUTD Capstone Team PRSM - Cross-Disciplinary Innovation"
           className="w-full h-full object-cover"
           style={{ objectPosition: 'center 40%' }}
         />
@@ -53,14 +53,14 @@ export default function Hero() {
           </div>
 
           {/* Main headline */}
-          <h1 className="opacity-0 text-6xl md:text-7xl lg:text-8xl font-bold leading-tight text-white drop-shadow-2xl">
-            Innovating Across Disciplines
-          </h1>
+          <h2 className="opacity-0 text-6xl md:text-7xl lg:text-8xl font-bold leading-tight text-white drop-shadow-2xl">
+            SUTD Capstone 2025: Innovating Across Disciplines
+          </h2>
 
           {/* Subheadline */}
           <div className="opacity-0">
             <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto drop-shadow-lg">
-              A cross-disciplinary team from SUTD combining engineering, design, and computing to solve real-world challenges.
+              A cross-disciplinary <strong>capstone team</strong> from SUTD combining engineering, design, and computing to solve real-world challenges through university-industry partnership.
             </p>
           </div>
 
@@ -85,16 +85,18 @@ export default function Hero() {
           {/* CTA Buttons */}
           <div className="opacity-0 flex flex-wrap gap-4 justify-center pt-8">
             <a
-              href="#about-section"
+              href="#what-capstone-section"
               className="px-8 py-4 bg-primary text-white text-base font-semibold hover:bg-primary-dark transition-colors shadow-lg"
+              aria-label="Learn about SUTD Capstone Program"
             >
-              Explore Our Work
+              About Capstone
             </a>
             <a
               href="#contact-section"
               className="px-8 py-4 border-2 border-white text-white text-base font-semibold hover:bg-white hover:text-neutral-900 transition-all shadow-lg"
+              aria-label="Contact Team PRSM for Capstone Partnership"
             >
-              Get In Touch
+              Partner With Us
             </a>
           </div>
         </div>
