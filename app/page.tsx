@@ -76,6 +76,15 @@ const teamMembers = [
     github: 'https://github.com/Kantosaurus',
     linkedin: 'https://www.linkedin.com/in/ainsley-woo-094b3b19a/',
   },
+  {
+    name: 'Alson Tay',
+    role: 'Computational Designer & Urban Strategist',
+    discipline: 'Architecture and Sustainable Design',
+    bio: 'A computational designer focused on creating resilient, data-informed urban environments. He integrates parametric design, algorithmic thinking, and sustainable principles to shape buildings and infrastructure that respond intelligently to their contexts. His work spans generative facade systems, optimized urban layouts, and climate-responsive architectural forms—leveraging tools like Grasshopper, Rhino, and Python-driven simulations to bridge design intent with environmental performance. With a strong foundation in both digital fabrication and urban planning strategies, he develops spaces that balance aesthetic clarity, ecological responsibility, and the evolving needs of dynamic communities.',
+    image: '/team/alson.jpg',
+    skills: ['Rhino', 'Grasshopper', 'Parametric Design', 'Urban Planning'],
+    linkedin: 'https://www.linkedin.com/in/tay-alson/',
+  },
 ];
 
 export default function Home() {

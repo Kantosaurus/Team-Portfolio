@@ -211,7 +211,7 @@ export default function Contact() {
                   SEND PARTNERSHIP INQUIRY
                 </a>
                 <a
-                  href="/Team PRSM Capstone Proposal.pdf"
+                  href="/PRSM Capstone Proposal.pdf"
                   download
                   className="flex items-center justify-center gap-2 w-full px-8 py-4 bg-neutral-900 text-white text-sm font-semibold tracking-wide text-center hover:bg-neutral-800 transition-colors"
                 >

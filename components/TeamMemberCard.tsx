@@ -95,7 +95,6 @@ export default function TeamMemberCard({ member, index }: TeamMemberCardProps) {
             {member.discipline}
           </p>
         </div>
-sama 
         {/* Bio - consistent line height */}
         <p className="text-body text-neutral-700 leading-relaxed mb-6 flex-grow">
           {member.bio}

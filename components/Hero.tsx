@@ -92,7 +92,7 @@ export default function Hero() {
               About Capstone
             </a>
             <a
-              href="/Team PRSM Capstone Proposal.pdf"
+              href="/PRSM Capstone Proposal.pdf"
               download
               className="px-8 py-4 bg-white text-neutral-900 text-base font-semibold hover:bg-neutral-100 transition-all shadow-lg flex items-center gap-2"
               aria-label="Download Team PRSM Capstone Proposal Brochure"
